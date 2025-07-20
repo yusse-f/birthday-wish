@@ -39,36 +39,42 @@ window.addEventListener("resize", () => {
 
 // Countdown + videos
 let count = 3;
+const startButton = document.getElementById("startButton");
 const countEl = document.getElementById("count");
 const videoWrapper = document.getElementById("videoWrapper");
 const video = document.getElementById("birthdayVideo");
 const giftButton = document.getElementById("giftButton");
 
-const countdown = setInterval(() => {
-  count--;
-  if (count > 0) {
-    countEl.textContent = count;
-  } else {
-    clearInterval(countdown);
-    countEl.style.display = "none";
+// Start on button click
+startButton.addEventListener("click", () => {
+  startButton.style.display = "none";
+  countEl.style.display = "block";
 
-    // Start video 1 (autoplay muted, then enable sound)
-    videoWrapper.style.display = "block";
-    video.src = "0720.mp4";
-    video.muted = true;
+  const countdown = setInterval(() => {
+    count--;
+    if (count > 0) {
+      countEl.textContent = count;
+    } else {
+      clearInterval(countdown);
+      countEl.style.display = "none";
 
-    video.play()
-      .then(() => {
-        // Allow sound after autoplay starts
-        setTimeout(() => {
-          video.muted = false;
-        }, 300); // delay a bit to avoid blocking
-      })
-      .catch((e) => {
-        console.log("Autoplay failed:", e);
-      });
-  }
-}, 1000);
+      // Start video 1 (autoplay muted, then unmute)
+      videoWrapper.style.display = "block";
+      video.src = "0720.mp4";
+      video.muted = true;
+
+      video.play()
+        .then(() => {
+          setTimeout(() => {
+            video.muted = false;
+          }, 300);
+        })
+        .catch((e) => {
+          console.log("Autoplay failed:", e);
+        });
+    }
+  }, 1000);
+});
 
 // When video 1 ends, show gift button
 video.addEventListener("ended", () => {
