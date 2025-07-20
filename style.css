@@ -1,0 +1,81 @@
+body {
+  margin: 0;
+  background: black;
+  overflow: hidden;
+  font-family: monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  color: white;
+}
+
+#matrix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+.countdown {
+  font-size: 10rem;
+  color: hotpink;
+  animation: pulse 1s infinite alternate;
+  text-align: center;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.video-wrapper {
+  display: none;
+  width: 90vw;
+  max-width: 600px;
+}
+
+video {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 0 30px hotpink;
+  opacity: 0;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+#giftButton {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px 40px;
+  font-size: 1.5rem;
+  background: hotpink;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #f0f;
+  cursor: pointer;
+  z-index: 20;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+#giftButton:hover {
+  background: #ff00aa;
+}
