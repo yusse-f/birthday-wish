@@ -25,6 +25,7 @@ body {
   color: hotpink;
   animation: pulse 1s infinite alternate;
   text-align: center;
+  display: none; /* hidden until start */
 }
 
 @keyframes pulse {
@@ -77,5 +78,27 @@ video {
 }
 
 #giftButton:hover {
+  background: #ff00aa;
+}
+
+/* 🎉 Start Button */
+#startButton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px 40px;
+  font-size: 1.5rem;
+  background: hotpink;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #f0f;
+  cursor: pointer;
+  z-index: 20;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+#startButton:hover {
   background: #ff00aa;
 }
